@@ -41,9 +41,10 @@ namespace PicklesDoc.Pickles.TestFrameworks.VsTest
                 .Replace("\\", string.Empty)
                 .Replace("(", string.Empty)
                 .Replace(")", string.Empty)
-                .Replace(".", "_")
+                .Replace("@", string.Empty)
                 .Replace("!", string.Empty)
                 .Replace("&", string.Empty)
+                .Replace("-", string.Empty)
                 .ToUpperInvariant()
                 .Replace("Ä", "A")
                 .Replace("Ö", "O")
@@ -55,6 +56,8 @@ namespace PicklesDoc.Pickles.TestFrameworks.VsTest
                 .Replace("Æ", "AE")
                 .Replace('Ø', 'O')
                 .Replace('Å', 'A');
+                
+            matchValue = Regex.Replace(matchValue, @"\.+", "_");
 
             var variantMatch = VariantRegex.Match(element.Name().ToUpperInvariant());
             if (variantMatch.Success)
